@@ -9,10 +9,15 @@ class Migration(migrations.Migration):
 
     initial = True
 
+    # Dependency tuples that consist of the app name, 
+    # in this case blog and the migrations that must be applied before this one can be.
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
-
+    # tells Django what changes to make to the database. 
+    # In this case, the changes are to create a model named Post. 
+    # The fields list contains exactly the same field names and types that
+    #  you created in your model in models.py.
     operations = [
         migrations.CreateModel(
             name='Post',
