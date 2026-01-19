@@ -18,6 +18,19 @@ class Post(models.Model):
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    # Order posts by created_on. Removeing "-" reverses the order from descending
+    # to ascending.
+    class Meta:
+        ordering = ["-created_on"]
+
+    # Change post identifier to a string literal.
+    # .__str__() provides the informal string representation of an object, 
+    # aimed at the user.
+    # By passing self as an argument to the __str__() method, 
+    # you can use the field values in the f-string.
+    def __str__(self):
+        return f"{self.title} | written by {self.author}"
+
 class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
