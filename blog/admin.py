@@ -8,7 +8,8 @@ from django.contrib import admin
 # For example, in future topics, you will create a Comment model, 
 # which will need to be imported at that point.
 
-from .models import Post
+from .models import Post, Comment
 
 # Register your models here.
 admin.site.register(Post)
+admin.site.register(Comment)
