@@ -15,4 +15,5 @@ class PostList(generic.ListView):
 
     # Filter by Published status, i.e. filter out Drafts
     queryset = Post.objects.filter(status=1)
-    template_name = "post_list.html"
+    template_name = "blog/index.html"
+    paginate_by = 6
