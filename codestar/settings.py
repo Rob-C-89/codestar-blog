@@ -46,6 +46,14 @@ INSTALLED_APPS = [
     'blog',
 ]
 
+# Middleware sits between the web request and the web response,
+# can modify a request prior to it hitting the view code and then 
+# modify the response after the view has created it.
+
+# In the case of Whitenoise, it modifies the response to load the 
+# static files from the staticfiles directory and serve them when 
+# a user visits our site.
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
