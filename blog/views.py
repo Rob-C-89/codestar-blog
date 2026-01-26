@@ -55,6 +55,13 @@ def post_detail(request, slug):
     # containing one post. In this view, we pass the request object,
     # the path to the template and a dictionary of data to the
     # Django render() helper function.
+
+    # The object is being passed to the template as a
+    # Python dictionary, {"post": post}. We retrieve one single
+    # blog post, store it in a variable called post and pass that
+    # through to the template in a dictionary where both the value and
+    # key name are post. This is called context and it is how you pass
+    # data from your own views to a template.
     return render(
         request,
         "blog/post_detail.html",
