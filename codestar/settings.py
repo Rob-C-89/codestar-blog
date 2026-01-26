@@ -42,10 +42,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django_summernote',
     'blog',
     'about',
 ]
+
+# We need to add a SITE_ID of 1 so that Django can handle multiple sites
+# from one database. We need to give each project an ID value so that
+# the database is aware of which project is contacting it.
+
+# The redirection URLs are also added so that after we've logged in or out,
+# the site will automatically redirect us to the home page.
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Middleware sits between the web request and the web response,
 # can modify a request prior to it hitting the view code and then
@@ -64,6 +79,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'codestar.urls'
@@ -131,6 +147,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NumericPasswordValidator',
     },
 ]
+
+# We are not using email verification in this project, so this line
+# informs Django not to expect it. Without this line, you would
+# get Internal Server errors (code 500) during login and registration.
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 
 # Internationalization
