@@ -47,11 +47,11 @@ INSTALLED_APPS = [
 ]
 
 # Middleware sits between the web request and the web response,
-# can modify a request prior to it hitting the view code and then 
+# can modify a request prior to it hitting the view code and then
 # modify the response after the view has created it.
 
-# In the case of Whitenoise, it modifies the response to load the 
-# static files from the staticfiles directory and serve them when 
+# In the case of Whitenoise, it modifies the response to load the
+# static files from the staticfiles directory and serve them when
 # a user visits our site.
 
 MIDDLEWARE = [
@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
-#}
+# }
 
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -102,7 +102,7 @@ DATABASES = {
 
 
 # This allows both your development server and Heroku (your production server)
-# to add blog posts using the Django admin panel. 
+# to add blog posts using the Django admin panel.
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
@@ -114,16 +114,20 @@ CSRF_TRUSTED_ORIGINS = [
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.U'
+        'serAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'NumericPasswordValidator',
     },
 ]
 
