@@ -20,6 +20,7 @@
           <div class="card mb-4">
             <div class="card-body">
               <div class="image-container">
+                <!-- Code for image-->
                 {% if "placeholder" in post.featured_image.url %}
                 <img
                   class="card-img-top"
@@ -33,6 +34,7 @@
                   alt="{{ post.title }}"
                 />
                 {% endif %}
+                <!-- Author -->
                 <div class="image-flash">
                   <p class="author">Author: {{ post.author }}</p>
                 </div>
@@ -78,5 +80,7 @@
 </div>
 
 <!-- index.html content ends here -->
-{% endblock %} {% block copyright %} Copyright 2026 Robbie Cornell {% endblock
-%}
+{% endblock %}
+{% block copyright %} 
+Copyright 2026 Robbie Cornell 
+{% endblock%}
