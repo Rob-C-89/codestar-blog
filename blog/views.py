@@ -46,6 +46,8 @@ def post_detail(request, slug):
     # raise a Http404 error if the data object does not exist.
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
+    comments = post.comments.all().order_by("-created_on")
+    comment_count = post.comments.filter(approved=True).count()
 
     # Python functions always have a return. The path to
     # the template file is included in the view function return.
@@ -65,5 +67,9 @@ def post_detail(request, slug):
     return render(
         request,
         "blog/post_detail.html",
-        {"post": post},
+        {
+            "post": post,
+            "comments": comments,
+            "comment_count": comment_count,
+        }
     )
